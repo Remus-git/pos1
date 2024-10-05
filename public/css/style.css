@@ -1,0 +1,86 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    
+}
+.category{
+    display: flex;
+    justify-content: center;
+}
+.chart{
+    display: flex;
+    justify-content: center;
+}
+.sale{
+    display: flex;
+    justify-content: center;
+}
+.service{
+    display: flex;
+    justify-content: center;
+}
+.stock{
+    display: flex;
+    justify-content: center;
+}
+.selected{
+    align-items: center;
+}
+.processTran{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainMenu{
+    gap: 1.6rem;
+}
+.menu{
+    height: 90%;
+}
+.addItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.saleOverview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    column-gap: 3rem;
+}
+.yesterdaySale{
+    
+    align-items: center;
+    column-gap: 1rem;
+}
+.chartHeader{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
