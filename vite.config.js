@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
 import react from "@vitejs/plugin-react";
+import laravel from 'laravel-vite-plugin';
+
+
 
 export default defineConfig({
+    
     plugins: [
         laravel({
             input: [
@@ -11,6 +14,18 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        react(),
+        
     ],
+    esbuild: {
+        loader: 'jsx',
+        include: /.*\.jsx?$/,
+        exclude: []
+      },
+      optimizeDeps: {
+        esbuildOptions: {
+          loader: {
+            '.js': 'jsx',
+          },
+        },
+      },
 });

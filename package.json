@@ -19,11 +19,10 @@
         "postcss": "^8.4.47",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "read-scripts": "^5.0.1",
-        "web-vitals": "^2.1.4",
         "sass": "^1.56.1",
         "tailwindcss": "^3.4.13",
-        "vite": "^5.4.8"
+        "vite": "^5.4.8",
+        "web-vitals": "^2.1.4"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.6.0",
