@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 
 let a = ["hellp","sfsdf","serf"];
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const subtotal = ReactDOM.createRoot(document.getElementById('subtotal'));
 let productList = document.getElementsByClassName("addCart");
 let parentElement;
 let object;
@@ -38,10 +39,8 @@ const ListComponent = (name,selling) => {
 
 function Welcome() {    
     
-    selectedItems.map((item)=>(
-        total += item.selling
-    ))
-    console.log(total);
+
+    
     
     return (
     
@@ -94,6 +93,43 @@ function Welcome() {
         
 
 }
+function SubTotal(){
+    total = 0;
+    selectedItems.map((item)=>{
+        total += item.selling;
+    }        
+)
+    return (
+        <div class="voucher mt-2 divide-y divide-dotted ">
+                        <div class="voucherSubTotal">
+                            <div class="totalItem flex justify-between mt-2 ">
+                                <label  class=" text-gray-500">Item</label>
+                                <div class="itemCount">
+                                    <h3 class=" font-semibold">{selectedItems.length}(Items)</h3>
+                                </div>
+                            </div>
+                            <div class="subTotal flex justify-between mt-2 ">
+                                <label  class=" text-gray-500">Subtotal</label>
+                                <div class="subtotalAmts">
+                                    <h3 class=" font-semibold">{total}</h3>
+                                </div>
+                            </div>
+                            <div class="discount flex justify-between mt-2 ">
+                                <label  class=" text-gray-500">Discount</label>
+                                <div class="discountAmt">
+                                    <h3 class=" font-semibold">10%</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Total flex justify-between mt-5 ">
+                            <label ass="font-semibold">Total</label>
+                            <div class="totalAmt">
+                                <h2 class=" font-semibold">{total-(total*0.1)}</h2>
+                            </div>
+                        </div>
+                    </div> 
+    )
+}
 
 
 
@@ -106,9 +142,10 @@ for (var i=0; i < productList.length; i++) {
         selectedItems.push(object);
         
         root.render(<Welcome/>)
-        
+        subtotal.render(<SubTotal/>)
         
     })
 };
+
 
 export default Welcome;

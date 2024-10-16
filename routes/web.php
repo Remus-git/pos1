@@ -18,6 +18,9 @@ Route::get('/chart',[ProductController::class,'chart']);
 Route::post('/service/add',[ServiceController::class,'add']);
 Route::post('/inventory/add',[InventoryController::class,'store']);
 
+Route::get('/search',[ProductController::class, 'search']);   
+Route::get('/service/search',[ProductController::class,'serviceSearch']);
+Route::get('/inv-search',[ProductController::class,'inventorySearch']);
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

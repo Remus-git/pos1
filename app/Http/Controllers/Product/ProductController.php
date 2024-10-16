@@ -13,16 +13,52 @@ class ProductController extends Controller
 {   
     
     public function index(){
-        $data = inventory::all();
+        $param = isset($_GET['category'])? htmlspecialchars($_GET['category']) : 'all';
+
+        if ($param == 'all') {
+            $data = inventory::all();   
+        }else{
+            $data = inventory::where('category',$param)->get();
+        }
+        
         return view('view.home',['products'=>$data]);
     }
+
+    public function search(Request $request){
+        
+        $query = $request->input('query');
+        if($query){
+            $data = inventory::where('name', 'like' , "%{$query}%")
+            ->orWhere('category','like',"%{$query}%")
+            ->get();
+        }else{
+            $data = inventory::all();
+        }
+        
+        return view('view.home',['products'=>$data]);
+    }
+
     public function inventory(){
-        $data = inventory::all();
+        $data = inventory::latest()->paginate(8);
         return view('view.inventory',['products'=>$data]);
     }
     public function addInventory(){
         $data = Category::all();
         return view('view.add-inventory',['categories'=>$data]);
+    }
+    public function inventorySearch(Request $request){
+
+        $query = $request->input('query');
+        if($query){
+            $data = inventory::where('name', 'like' , "%{$query}%")
+            ->orWhere('category','like',"%{$query}%")
+            ->limit(5)
+            ->get();
+        }else{
+            $data = inventory::all();
+        }
+
+        return view('view.inventory',['products'=>$data]);
     }
     public function sale(){
         return view('view.sale');
@@ -31,6 +67,22 @@ class ProductController extends Controller
         $data = Service::latest()->paginate(5);
         return view('view.service',['services'=>$data]);
     }
+    public function serviceSearch(Request $request){
+
+        $query = $request->input('query');
+        if($query){
+            $data = Service::where('name', 'like' , "%{$query}%")
+            ->orWhere('description','like',"%{$query}%")
+            ->orWhere('phone','like',"%{$query}%")
+            ->limit(5)
+            ->get();
+        }else{
+            $data = Service::all();
+        }
+
+        return view('view.service',['services'=>$data]);
+    }
+
     public function addService(){
         return view('view.add-service');
     }
