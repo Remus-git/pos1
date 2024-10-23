@@ -10,24 +10,26 @@ class InventoryController extends Controller
 {   
     public function store(){
         $inventory = new Inventory;
-    
-        $inventory->name = request()->name;
-        $inventory->category = request()->category;
-        $inventory->date = request()->date;
-        $inventory->buying = request()->buying;
-        $inventory->selling = request()->selling;
-        $inventory->quantity = request()->quantity;
-
         if(request()->hasfile('image'))
         {
             $file = request()->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->move('uploads/inventory', $filename);
-            $inventory->image = $filename;
+            $imgFile = "uploads/inventory/$filename";
+            echo $imgFile;
+            $inventory->image = $imgFile;
         }else{
             $inventory->image = "image";
         }
+        
+        $inventory->name = request()->name;
+        $inventory->category = request()->category;
+        $inventory->date = request()->date;
+        $inventory->buying = request()->buying;
+        $inventory->selling = request()->selling;
+        $inventory->quantity = request()->quantity;
+        
         $inventory->save();
         return redirect('inventory');
     }

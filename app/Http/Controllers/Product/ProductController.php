@@ -16,7 +16,7 @@ class ProductController extends Controller
         $param = isset($_GET['category'])? htmlspecialchars($_GET['category']) : 'all';
 
         if ($param == 'all') {
-            $data = inventory::all();   
+            $data = inventory::all(); 
         }else{
             $data = inventory::where('category',$param)->get();
         }

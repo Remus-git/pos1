@@ -97,7 +97,7 @@
                             @foreach($services as $service)                                                                         
                             <tr class="border-b dark:border-gray-700">
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$service->id}}</th>
-                                <td class="px-4 py-3">S{{$service->id}}</td>
+                                <td class="px-4 py-3">{{$service->id}}</td>
                                 <td class="px-4 py-3">{{$service->date}}</td>
                                 <td class="px-4 py-3">{{$service->name}}</td>
                                 <td class="px-4 py-3">{{$service->description}}</td>
