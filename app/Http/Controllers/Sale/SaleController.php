@@ -19,10 +19,11 @@ class SaleController extends Controller
             $sale->name = $item["name"];
             $sale->category = $item["category"];
             $sale->quantity = $item["quantity"];
+            $sale->price = $item["selling"];
             $sale->total = $item["quantity"] * $item["selling"];
             $sale->save();
-            return back();
         }   
+        return back();
         
     }
 

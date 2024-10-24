@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\inventory;
 use App\Models\Category;
 use App\Models\Service;
+use App\Models\Sale;
 
 class ProductController extends Controller
 {   
@@ -61,7 +62,8 @@ class ProductController extends Controller
         return view('view.inventory',['products'=>$data]);
     }
     public function sale(){
-        return view('view.sale');
+        $data = Sale::latest()->paginate(8);
+        return view('view.sale',['sales'=>$data]);
     }
     public function service(){
         $data = Service::latest()->paginate(5);
